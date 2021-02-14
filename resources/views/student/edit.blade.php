@@ -13,7 +13,17 @@
    Pavardė: <input type="text" name="student_surname" value="{{old('student_surname', $student->surname)}}">
    E-paštas: <input type="text" name="student_email" value="{{old('student_email', $student->email)}}">
    Tel.nr.: <input type="text" name="student_phone" value="{{old('student_phone', $student->phone)}}">
-   @csrf
+   <div class="form-group">
+                    <label>Foto</label>
+                    <input type="file"  name="student_portret">
+                    <small class="form-text text-muted">Studento nuotrauka.</small>
+                </div>
+                @if($student->photo)
+                <img style="height:50px;" scr="{{asset('portrets').'/'.$student->photo}}" alt="{{$student->name}}"><br>
+                   @else 
+                   Portreto nera
+                   @endif
+  @csrf
    <button type="submit">KEISTI</button>
 </form>
 

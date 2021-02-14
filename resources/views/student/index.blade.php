@@ -9,7 +9,9 @@
 
                <div class="card-body">
                  @foreach ($students as $student)
-  {{$student->name}} {{$student->surname}} e-paštas: {{$student->email}} tel.nr.: {{$student->phone}}<br>
+  {{$student->name}} {{$student->surname}}<br> 
+  <img style="height:50px;" scr="{{asset('portrets').'/'.$student->photo}}" alt="{{$student->name}}"><br>
+  e-paštas: {{$student->email}} tel.nr.: {{$student->phone}}<br>
 <a class="btn btn-info btn-sm" href="{{route('student.show',[$student])}}">DAUGIAU</a>
 <a class="btn btn-info btn-sm" href="{{route('student.edit',[$student])}}">KEISTI</a>
 <form method="POST" style="float:right;" action="{{route('student.destroy', [$student])}}">

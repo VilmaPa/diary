@@ -8,7 +8,8 @@
                <div class="card-header">NAUJAS STUDENTAS</div>
 
                <div class="card-body">
-                 <form method="POST" action="{{route('student.store')}}">
+               {{-- enctype reikia jei paveikslelis bus --}}
+                 <form method="POST" action="{{route('student.store')}}" enctype="multipart/form-data"> 
                  <div class="form-group">
                     <label>Vardas</label>
                     <input type="text" class="form-control" name="student_name" value="{{old('student_name')}}">
@@ -28,6 +29,11 @@
                     <label>Telefono numeris</label>
                     <input type="text" class="form-control" name="student_phone" value="{{old('student_phone')}}">
                     <small class="form-text text-muted">Studento tel.nr.</small>
+                </div>
+                <div class="form-group">
+                    <label>Foto</label>
+                    <input type="file" name="student_portret">
+                    <small class="form-text text-muted">Studento nuotrauka.</small>
                 </div>
    @csrf
    <button class="btn btn-info btn-sm" style="float:right;" type="submit">PRIDĖTI</button>
