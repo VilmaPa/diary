@@ -10,7 +10,9 @@
                <div class="card-body">
                  @foreach ($students as $student)
   {{$student->name}} {{$student->surname}}<br> 
-  <img style="height:50px;" scr="{{asset('portrets').'/'.$student->photo}}" alt="{{$student->name}}"><br>
+  @if($student->photo)
+  <img style="height:50px;" src="{{asset('portrets').'/'.$student->photo}}" alt="{{$student->name}}"><br>
+  @endif
   e-paštas: {{$student->email}} tel.nr.: {{$student->phone}}<br>
 <a class="btn btn-info btn-sm" href="{{route('student.show',[$student])}}">DAUGIAU</a>
 <a class="btn btn-info btn-sm" href="{{route('student.edit',[$student])}}">KEISTI</a>

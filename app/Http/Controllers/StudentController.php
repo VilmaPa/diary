@@ -72,9 +72,9 @@ class StudentController extends Controller
 
         $student = new Student;
 
-        if ($request->has('student_photo')) {
+        if ($request->has('student_portret')) {
             //Get image file
-            $image = $request->file('student_photo');
+            $image = $request->file('student_portret');
             //Make a image name based on user name and current timestamp + file extension
             $imageName = $request->student_name.'-'.time().'.'.$image->getClientOriginalExtension();
             //Define folder path
@@ -154,6 +154,26 @@ class StudentController extends Controller
             $request->flash();
             return redirect()->back()->withErrors($validator);
         }
+
+        if ($request->has('student_portret')) {
+            //Get image file
+            $image = $request->file('student_portret');
+
+            if($student->photo) {
+                unlink(public_path() . '/' . 'portrets' . '/'.$student->photo);
+            }
+         
+            
+            //Make a image name based on user name and current timestamp + file extension
+            $imageName = $request->student_name.'-'.time().'.'.$image->getClientOriginalExtension();
+            //Define folder path
+            $path = public_path() . '/' . 'portrets' . '/';
+            //Make a file path where image will be stored [ fo;der path + file name]
+            $image->move($path, $imageName);
+
+            $student->photo = $imageName;
+        }
+      
         $student->name = $request->student_name;
         $student->surname = $request->student_surname;
         $student->email = $request->student_email;
@@ -172,6 +192,9 @@ class StudentController extends Controller
     {
         if($student->studentGrades->count()){
             return 'Trinti negalima, nes turi įvertinimų.';
+        }
+        if($student->photo) {
+            unlink(public_path() . '/' . 'portrets' . '/'.$student->photo);
         }
  
         $student->delete();
