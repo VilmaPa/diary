@@ -51,6 +51,7 @@ class StudentController extends Controller
             'student_surname' => ['required', 'min:3', 'max:64'],
             'student_email' => ['required'],
             'student_phone' => ['required'],
+            'student_portret' => ['mimes:jpeg,png', 'max:1014'], //tikrina tipa ir dydi prikabinamo file.
         ],
         [
             'student_name.required' => 'Įveskite studento vardą.',
@@ -136,6 +137,7 @@ class StudentController extends Controller
             'student_surname' => ['required', 'min:3', 'max:64'],
             'student_email' => ['required'],
             'student_phone' => ['required'],
+            'student_portret' => ['mimes:jpeg,png', 'max:1014'], //tikrina tipa ir dydi prikabinamo file.
         ],
         [
             'student_name.required' => 'Įveskite studento vardą.',
@@ -169,7 +171,7 @@ class StudentController extends Controller
             //Define folder path
             $path = public_path() . '/' . 'portrets' . '/';
             //Make a file path where image will be stored [ fo;der path + file name]
-            $image->move($path, $imageName);
+            $image->move($path, $imageName);   //laravel metodas
 
             $student->photo = $imageName;
         }
@@ -194,7 +196,7 @@ class StudentController extends Controller
             return 'Trinti negalima, nes turi įvertinimų.';
         }
         if($student->photo) {
-            unlink(public_path() . '/' . 'portrets' . '/'.$student->photo);
+            unlink(public_path() . '/' . 'portrets' . '/'.$student->photo);  //php funkcija
         }
  
         $student->delete();
