@@ -1,32 +1,30 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap');
 
-window.Vue = require('vue').default;
-
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-const app = new Vue({
-    el: '#app',
-});
+//reikia evento, kuris pasakytu kada baigesi krovimas
+window.addEventListener('DOMContentLoaded', () => {
+    
+    //is ID pavadinima ikeliam su #
+        if(document.querySelector('#students-list')){
+            console.log('DOM fully loaded and parsed');
+    //toliau esancios reikalingos jei yra sortinimas indexe paspaudus ant linko
+    //         document.querySelectorAll('[data-sort]').forEach(a => {
+    //             a.addEventListener('click', e => {
+    //                 e.preventDefault();  //kad eventas neitu linku
+    
+    //                 // console.log(a.dataset.sort);
+    //                 console.log(sortUrl);
+    //                 //ikopinam kad veiktu axies, app.blade.js
+    //                 axios.get(sortUrl+a.dataset.sort)
+    //                 .then(function (response) {
+    //                     // handle success
+    //                     console.log(response.data.list);
+    //                     document.querySelector('#students-list').innerHTML = response.data.list;
+    //                 })
+    //                 .catch(function (error) {
+    //                     // handle error
+    //                     console.log(error);
+    //                 })
+    //       });
+    // })    
+      }
+    });
