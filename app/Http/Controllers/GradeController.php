@@ -51,13 +51,13 @@ class GradeController extends Controller
         $validator = Validator::make($request->all(),
         [
             'grade_grade' => ['required'],
-            'lecture_id' => ['required'],
-            'student_id' => ['required'],
+            'lecture_id' => ['required', 'integer', 'min:1'],
+            'student_id' => ['required', 'integer', 'min:1'],
         ],
         [
             'grade_grade.required' => 'Įveskite įvertinimą.',
-            'lecture_id.required' => 'Pasirinkite kursą.',
-            'student_id.required' => 'Pasirinkite studentą.',
+            'lecture_id.min' => 'Pasirinkite kursą.',
+            'student_id.min' => 'Pasirinkite studentą.',
         ]
         );
       
@@ -112,13 +112,13 @@ class GradeController extends Controller
         $validator = Validator::make($request->all(),
         [
             'grade_grade' => ['required'],
-            'lecture_id' => ['required'],
-            'student_id' => ['required'],
+            'lecture_id' => ['required','integer', 'min:1'],
+            'student_id' => ['required','integer', 'min:1'],
         ],
         [
             'grade_grade.required' => 'Įveskite įvertinimą.',
-            'lecture_id.required' => 'Pasirinkite kursą.',
-            'student_id.required' => 'Pasirinkite studentą.',
+            'lecture_id.min' => 'Pasirinkite kursą.',
+            'student_id.min' => 'Pasirinkite studentą.',
         ]
         );
       
