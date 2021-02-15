@@ -9,7 +9,7 @@
 
                <div class="card-body">
                  @foreach ($grades as $grade)
-  {{$grade->grade}} {{$grade->gradeStudent->name}} {{$grade->gradeStudent->surname}} {{$grade->gradeLecture->name}}
+  {{$grade->gradeLecture->name}} {{$grade->grade}} {{$grade->gradeStudent->name}} {{$grade->gradeStudent->surname}} 
   <a style="float:right;" class="btn btn-info btn-sm" href="{{route('grade.edit',[$grade])}}">KEISTI</a>
   <form style="float:right;" method="POST" action="{{route('grade.destroy', [$grade])}}">
    @csrf
